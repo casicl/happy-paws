@@ -4,12 +4,27 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>Happy Paws</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
     <script src='main.js'></script>
 </head>
 <body>
+    <header class="flex-container"><h1>Happy Paws</h1>
+    <h2>Find your new best friend</h2></header>
+
+<!--hero image?-->
+    <nav>
+        <!-- if logged in, show logout button, else show login button-->
+        {{#if logged_in}}
+        <a href="/profile">profile</a> |
+        <button class="no-button" id="logout">logout</button>
+        {{else}}
+        <a href="/login">login</a>
+        {{/if}}
+      </nav>
     
+      <div>{{{}}}</div>
+      <footer></footer>
 </body>
 </html>
