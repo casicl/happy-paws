@@ -10,10 +10,11 @@
     <script src='main.js'></script>
 </head>
 <body>
-    <header class="flex-container"><h1>Happy Paws</h1>
+    <header class="header"><h1>
+       &#x1F43E Happy Paws &#x1F43E</h1>
     <h2>Find your new best friend</h2></header>
 
-<!--hero image?-->
+
     <nav>
         <!-- if logged in, show logout button, else show login button-->
         {{#if logged_in}}
@@ -23,8 +24,10 @@
         <a href="/login">login</a>
         {{/if}}
       </nav>
+
+      
     
-      <div>{{{}}}</div>
+      <div>{{{body}}}</div>
       <footer></footer>
 </body>
 </html>
