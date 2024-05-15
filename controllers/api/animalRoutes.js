@@ -1,29 +1,38 @@
 const router = require('express').Router();
-const { User } = require('../../models');
-const cloudinary = require('../../utils/cloudinary');
-const upload = require('../../utils/multer');
+const { Model } = require('sequelize');
+const { animals } = require('../../models');
+const withAuth = require('../../utils/auth');
 
-
-//image user comes from front end.
-router.put('/images', upload.single('imageUser'), async (req, res) => {
-
+router.post('/', withAuth, async (req, res) => {
     try {
-  
-      const result = await cloudinary.uploader.upload(req.file.path)
-      User.update({
-        imagename: req.file.originalname,
-        animal_image: result.secure_url,
-        cloudinary_id: result.public_id,
-      }, {
-        where: {
-          id: req.session.user_id
-        }
-      }).then(answer => {
-        res.json(answer)
-      })
+        const newAnimals = await animals.create({
+            ...req.body,
+            user_id: req.session.user_id,
+        });
+
+        res.status(200).json(newAnimals);
     } catch (err) {
-      console.log(err)
+        res.status(400).json(err);
     }
-  })
-  
-  module.exports = router;
+});
+
+router.delete('/:id', withAuth, async (req, res) => {
+    try {
+        const animalsData = await animals.destroy({
+            where: {
+                id: req.params.id,
+                user_id: req.session.user_id,
+            },
+        });
+        
+        if (!animalsData) {
+            res.status(404).json({ message: 'No animal found with this id!'});
+            return;
+        }
+    res.status(200).json(animalsData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+module.exports = router;
