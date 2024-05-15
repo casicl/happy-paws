@@ -2,6 +2,8 @@ const router = require('express').Router();
 const { Model } = require('sequelize');
 const { animals } = require('../../models');
 const withAuth = require('../../utils/auth');
+const cloudinary = require('../../utils/cloudinary');
+const upload = require('../../utils/multer');
 
 router.post('/', withAuth, async (req, res) => {
     try {
@@ -34,5 +36,28 @@ router.delete('/:id', withAuth, async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+
+router.put('/images', upload.single('imageUser'), async (req, res) => {
+
+  try {
+
+    const result = await cloudinary.uploader.upload(req.file.path)
+    animals.update({
+      imagename: req.file.originalname,
+      animal_image: result.secure_url,
+      cloudinary_id: result.public_id,
+    }, {
+      where: {
+        id: req.session.user_id
+      }
+    }).then(answer => {
+      res.json(answer)
+    })
+  } catch (err) {
+    console.log(err)
+  }
+})
+
 
 module.exports = router;
