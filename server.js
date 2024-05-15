@@ -33,7 +33,9 @@ const sess ={
     },
     resave: false,
     saveUninitialized: true,
-    store: new SequelizeStore({sequelize})
+    store: new SequelizeStore({
+        db: sequelize,
+      }),
 }
 app.use(session(sess));
 
