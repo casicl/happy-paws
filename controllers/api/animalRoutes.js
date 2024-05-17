@@ -5,11 +5,11 @@ const withAuth = require('../../utils/auth');
 const cloudinary = require('../../utils/cloudinary');
 const upload = require('../../utils/multer');
 
-router.post('/', withAuth, async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const newAnimals = await animals.create({
             ...req.body,
-            user_id: req.session.user_id,
+            
         });
 
         res.status(200).json(newAnimals);
@@ -58,6 +58,19 @@ router.put('/images', upload.single('imageUser'), async (req, res) => {
     console.log(err)
   }
 })
+router.put("/adopt/:id", withAuth, async(req, res)=> {
+try {
+  const animalToAdopt = await animals.update(
+    {user_id: req.session.user_id
 
+    }, {
+      where: {id: req.params.id} })
+if(!animalToAdopt){
+  console.log("animal not found")
+  return
+}  
+res.json(animalToAdopt)
+}
+catch(err){res.json(err)}})
 
 module.exports = router;
