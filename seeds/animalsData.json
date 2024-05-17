@@ -17,7 +17,8 @@
     {
       "name": "Male Maine Coon Mix",
       "description": "Independent but very sweet, likes to cuddle at night, LOVES whipped cream",
-      "adoption_fee": 100
+      "adoption_fee": 100,
+      "user_id": 1
     }
   ]
   
