@@ -18,8 +18,13 @@
     <nav>
         <!-- if logged in, show logout button, else show login button-->
         {{#if logged_in}}
+ CC_post.js-code
         <a href="/addPet">Add a pet for adoption</a> |
+
+        <a href="/addPet">Add a pet for adoption</a> |
+ dev
         <button class="no-button" id="logout">logout</button>
+    <script src="./js/logout.js"></script>
         {{else}}
         <a href="/login">login</a>
         
