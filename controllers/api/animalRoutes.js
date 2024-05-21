@@ -6,14 +6,17 @@ const cloudinary = require('../../utils/cloudinary');
 const upload = require('../../utils/multer');
 
 router.post('/', async (req, res) => {
+  console.log("body is ",req.body)
     try {
         const newAnimals = await animals.create({
             ...req.body,
+            user_id:req.session.user_id
             
         });
 
         res.status(200).json(newAnimals);
     } catch (err) {
+      console.log(err)
         res.status(400).json(err);
     }
 });
@@ -72,5 +75,6 @@ if(!animalToAdopt){
 res.json(animalToAdopt)
 }
 catch(err){res.json(err)}})
+
 
 module.exports = router;
