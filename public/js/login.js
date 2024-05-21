@@ -2,43 +2,44 @@ const loginFormHandler = async (event) => {
     event.preventDefault();
   
     // login form values
-    const email = document.querySelector("#email").value.trim();
-    const password = document.querySelector("#password").value.trim();
+    const userEmail = document.querySelector("#email").value.trim();
+    const userPass = document.querySelector("#password").value.trim();
   
     if (email && password) {
+    
       const response = await fetch('/api/users/login', {
         method: 'POST',
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email: userEmail, password: userPass }),
         headers: { 'Content-Type': 'application/json' },
       });
   
-      if (response.ok) {
-        document.location.replace('/profile');
-      } else {
-        alert(response.statusText);
-      }
+       if (response.ok) {
+         document.location.replace('/');
+       } else {
+         alert(response.statusText);
+       }
     }
   };
   
   const signupFormHandler = async (event) => {
     event.preventDefault();
   
-    const name = document.querySelector("#name").value.trim();
-    const email = document.querySelector("#email").value.trim();
-    const password = document.querySelector("#create-password").value.trim();
+    const username = document.querySelector("#name").value.trim();
+    const useremail = document.querySelector("#email").value.trim();
+    const userpassword = document.querySelector("#create-password").value.trim();
   
     if (name && email && password) {
-      const response = await fetch('/api/users', {
+      const response = await fetch('/api/users/login', {
         method: 'POST',
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({ name: username, email: useremail, password: userpassword }),
         headers: { 'Content-Type': 'application/json' },
       });
   
-      if (response.ok) {
-        document.location.replace('/profile');
-      } else {
-        alert(response.statusText);
-      }
+    //   if (response.ok) {
+    //     document.location.replace('/');
+    //   } else {
+    //     alert(response.statusText);
+    //   }
     }
   };
   

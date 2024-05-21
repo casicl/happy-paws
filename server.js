@@ -19,8 +19,7 @@ const PORT = process.env.PORT || 3001;
 //handlebars
 const hbs = exphbs.create({helpers});
 
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
+
 
 //cookies
 const sess ={
@@ -31,14 +30,15 @@ const sess ={
         secure: true,
         sameSite: "strict",
     },
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     store: new SequelizeStore({
         db: sequelize,
       }),
 }
 app.use(session(sess));
-
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({extended:true}));
