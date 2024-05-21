@@ -1,11 +1,13 @@
 <div class = "animals-container">
 
-</div>]
+</div>
     {{#each animals as |animals|}}
 
     <div>
-        {{animals.name}}
-        {{animals.description}}
-        {{animals.date_created}}
-        {{animals.adoption_fee}}
+        <!--p tags-->
+        <p id="animal_name">{{animals.name}}</p>
+        <p id="animal_description">{{animals.description}}</p>
+        <p id="animal_date">{{animals.date_created}}</p>
+        <p id="animal_fee">{{animals.adoption_fee}}</p>
     </div>
+    {{/each}}
