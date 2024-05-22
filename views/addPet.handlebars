@@ -1,0 +1,62 @@
+<!--post a pet form-->
+{{!-- {{var cloudinary = require('cloudinary');}} --}}
+<h2> Welcome, {{name}}</h2>
+
+<h3>Find your pet a new home</h3>
+
+<form class = "new-pet" id="new-pet">
+    <label for="animal_name">Pet's name:</label>
+    <input class="form-input" type="text" id="animal-name" name="animal-name"/>
+
+    <label for="animal-description">Description of pet:</label>
+    <input class="form-input" type="text" id="animal-description" name="animal-description"/>
+
+    <label for="animal-image">Image of pet:</label>
+    <button id="open-widget">Select Image</button><div id="selected-image" style="margin-top: 20px;"><p>No image selected</p></div>
+    {{!-- <input class="form-input" type="text" id="animal-description" name="animal-description"/> --}}
+
+
+    <label for="date-created">Date:</label>
+    <input class="form-input" type="text" id="date-created" name="date-created"/>
+
+    <label for="adoption_fee">Adoption fee:</label>
+    <input class="form-input" type="text" id="adoption-fee" name="adoption-fee"/>
+
+
+    <button type="button" id="sbmtbtn" class="submit-button">Submit</button>
+</form>
+    
+    <!--delete animal-->
+
+
+      </div>
+   <div>
+        <!--what goes in curly brackets?-->
+       
+
+        <!--<button class="delete-post" data-id="delete">DELETE</button>
+ 
+</div>
+
+    <!--javascript post request and event listener-->
+    
+<script src="./js/addpet.js"></script>
+<script src="https://media-library.cloudinary.com/global/all.js"></script>
+ <script>
+    document.getElementById('open-widget').addEventListener('click', () => {
+      cloudinary.openMediaLibrary({
+        cloud_name: process.env.CLOUD_NAME, 
+        api_key: process.env.API_KEY, 
+        api_secret: process.env.API_SECRET,
+        username: 'your-username',
+        button_class: 'myButton',
+        button_caption: 'Select Image',
+        insert_transformation: true,
+      }, {
+        insertHandler: function (data) {
+          var imageUrl = data.assets[0].secure_url;
+          document.getElementById('selected-image').innerHTML = `<img src="${imageUrl}" alt="Selected Image" style="max-width: 100%;">`;
+        }
+      });
+    });
+  </script>

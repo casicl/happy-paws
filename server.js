@@ -19,8 +19,7 @@ const PORT = process.env.PORT || 3001;
 //handlebars
 const hbs = exphbs.create({helpers});
 
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
+
 
 //cookies
 const sess ={
@@ -28,7 +27,7 @@ const sess ={
     cookie: {
         maxAge: 300000,
         httpOnly: true,
-        secure: true,
+        secure: false,
         sameSite: "strict",
     },
     resave: false,
@@ -38,7 +37,8 @@ const sess ={
       }),
 }
 app.use(session(sess));
-
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.urlencoded({extended:true}));
