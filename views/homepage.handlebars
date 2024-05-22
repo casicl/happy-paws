@@ -13,7 +13,10 @@
         <p id="animal_description">{{animals.description}}</p>
         <p id="animal_date">{{animals.date_created}}</p>
         <p id="animal_fee">{{animals.adoption_fee}}</p>
-        <button id="adopt">Adopt Me</button>
+        {{#if ../logged_in}}
+        <button id="adopt">Adopt Me</button> |
+        <button id="comment">Comment</button>
+        {{/if}}
     </div>
     {{/each}}
 
