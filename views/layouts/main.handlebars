@@ -6,7 +6,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Happy Paws</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' href='public/css/style.css'>
+    <link rel='stylesheet'  href='/css/style.css'>
 
 </head>
 <body>
@@ -18,11 +18,8 @@
     <nav>
         <!-- if logged in, show logout button, else show login button-->
         {{#if logged_in}}
-
-        <a href="/addPet">Add a pet for adoption</a> |
-
-        <a href="/addPet">Add a pet for adoption</a> |
- 
+        <a href="/profile">Profile</a> |
+        <a href="/addPet">Add Pet</a> |
         <button class="no-button" id="logout">logout</button>
     <script src="./js/logout.js"></script>
         {{else}}
