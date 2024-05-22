@@ -6,7 +6,7 @@ const Animal = require("../models/animals");
 
 router.get("/", async (req, res)=> {
     console.log("home", req.session)
-    const animalData = await Animal.findAll({where: {user_id:null}})
+    const animalData = await Animal.findAll({})
     
     const animals = animalData.map((animal)=> animal.get({plain: true}));
 console.log(animals)
@@ -26,6 +26,10 @@ router.get("/login", async (req, res) => {
 
 router.get("/addPet", withAuth, async (req,res) => {
     res.render("addPet")
+    console.log("hello")
+})
+router.get("/profile", withAuth, async (req,res) => {
+    res.render("profile")
     console.log("hello")
 })
 module.exports = router;
