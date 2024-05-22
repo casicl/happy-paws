@@ -47,21 +47,21 @@ if (name && description && date_created && adoption_fee ) {
 //      }
 //     }
 // };
-const subButton = async (create) => {
-    if (create.target.hasattribute("new-pet")) {
-        const id = remove.target.getattritbute("new-pet");
+// const subButton = async (create) => {
+//     if (create.target.hasattribute("new-pet")) {
+//         const id = remove.target.getattritbute("new-pet");
 
-        const response = await fetch(`/api/animals/${id}`, {
-            method: "POST",
-     });
-     if (response.ok) {
-        //what is the correct /?
-        document.location.delete("/animal");
-     } else {
-        alert("could not create post");
-     }
-    }
-};
+//         const response = await fetch(`/api/animals/${id}`, {
+//             method: "POST",
+//      });
+//      if (response.ok) {
+//         //what is the correct /?
+//         document.location.delete("/animal");
+//      } else {
+//         alert("could not create post");
+//      }
+//     }
+// };
 
 document
     .querySelector('#sbmtbtn')
