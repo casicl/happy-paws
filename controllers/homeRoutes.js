@@ -28,4 +28,9 @@ router.get("/addPet", withAuth, async (req,res) => {
     res.render("addPet")
     console.log("hello")
 })
+
+router.get("/adoptme", withAuth, async (req,res) => {
+    res.render("adoptme")
+    console.log("hello")
+})
 module.exports = router;
