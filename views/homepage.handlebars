@@ -1,23 +1,26 @@
-
-
+<video class="video" width="1520" height="1440" autoplay loop muted>
+  <source src="/images/dogvidd.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
 
 <div class = "animals-container">
 
 
-</div>
     {{#each animals as |animals|}}
 
-    <div>
+    <div class = "animal-card">
         <!--p tags-->
-        <p id="animal_name">{{animals.name}}</p>
-        <p id="animal_description">{{animals.description}}</p>
-        <p id="animal_date">{{animals.date_created}}</p>
-        <p id="animal_fee">{{animals.adoption_fee}}</p>
+        <p id="animal_name">Name: {{animals.name}}</p>
+        <p id="animal_description">Description: {{animals.description}}</p>
+        <p id="animal_date">Date: {{animals.date_created}}</p>
+        <p id="animal_fee">Adoption Fee: ${{animals.adoption_fee}}</p>
         {{#if ../logged_in}}
         <button id="adopt">Adopt Me</button> |
         <button id="comment">Comment</button>
         {{/if}}
     </div>
     {{/each}}
+    </div>
+
 
     

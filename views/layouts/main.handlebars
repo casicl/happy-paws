@@ -11,24 +11,26 @@
 </head>
 <body>
     <header class="header"><h1>
-       &#x1F43E Happy Paws &#x1F43E</h1>
-    <h2>Find your new best friend</h2></header>
-
-
-    <nav>
+        <nav class="links">
         <!-- if logged in, show logout button, else show login button-->
         {{#if logged_in}}
+        <a href="/">Home</a> |
         <a href="/profile">Profile</a> |
         <a href="/addPet">Add Pet</a> |
         <button class="no-button" id="logout">logout</button>
     <script src="./js/logout.js"></script>
         {{else}}
-        <a href="/login">login</a>
+        <a class="login" href="/login">login</a>
         
         {{/if}}
       </nav>
 
       
+       &#x1F43E Happy Paws &#x1F43E</h1>
+    <h2>Find your new best friend</h2></header>
+
+
+    
     
       <div>{{{body}}}</div>
       <footer></footer>

@@ -1,13 +1,13 @@
 :root {
-    --primary: #f5e1da;
+    --primary: azure;
     --secondary: #f1f1f1;
-    --tertiary: #49beb7;
+    --tertiary: cadetblue;
     --quatrinary: #085f63;
 }
 
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: midnightblue;
+    color: black;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -26,3 +26,35 @@ nav {
 
 }
 
+.video {
+    margin-top: 0px;
+    width: 1600px;
+    height: 900px;
+}
+
+.animals-container {
+    text-align: center;
+    align-items: center;
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
+.animal-card {
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 10px;
+    background-color:cadetblue;
+}
+
+.login, .links {
+    margin-left: 0px;
+    margin-top: 0px;
+    font-size: 20px;
+    color: black;
+
+}
+
+.forms {
+    margin-left: 15px;
+}
