@@ -32,7 +32,7 @@ router.get("/addPet", withAuth, async (req,res) => {
 
 router.get("/adoptme", withAuth, async (req,res) => {
     res.render("adoptme")
-=======
+})
 router.get("/profile", withAuth, async (req,res) => {
     const animaldata = await Animal.findAll({where: {user_id: req.session.user_id}})
     console.log("animaldata", animaldata)
