@@ -1,16 +1,16 @@
 <div class = "animals-container">
 
-</div>
     {{#each animals as |animal|}}
 
-    <div>
+    <div class="animal-card">
         <!--p tags-->
         <p id="animal_name">{{animal.name}}</p>
         <p id="animal_description">{{animal.description}}</p>
         <p id="animal_date">{{animal.date_created}}</p>
         <p id="animal_fee">{{animal.adoption_fee}}</p>
-        <button class="delete"id={{animal.id}}>Delete</button>
+        <button class="delete" data-id={{animal.id}} onclick="deletepet(event)">Delete</button>
         <button id="edit">Edit</button>
     </div>
     {{/each}}
+    </div>
     <script src="/js/profile.js"></script>

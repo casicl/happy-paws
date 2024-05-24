@@ -25,7 +25,7 @@ router.get("/login", async (req, res) => {
 })
 
 router.get("/addPet", withAuth, async (req,res) => {
-    res.render("addPet")
+    res.render("addPet", {logged_in: req.session.logged_in})
     console.log("hello")
 })
 router.get("/profile", withAuth, async (req,res) => {
