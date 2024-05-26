@@ -60,6 +60,22 @@ nav {
 
 }
 
+
 .forms {
     margin-left: 15px;
+}
+
+.adopt-header {
+    margin-left: 50px;
+}
+
+.adopt-greeting {
+    margin-left: 50px;
+}
+#adopt-form {
+   margin-left: 50px; 
+}
+
+.adopt-pet {
+    margin-left: 50px;
 }
