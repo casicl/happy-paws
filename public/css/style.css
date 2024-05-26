@@ -18,11 +18,14 @@ header {
     padding: 50px;
     text-align: center;
     background: var(--tertiary);
+    opacity: 75%;
+    
 }
 
 nav {
     display: flex;
     background-color: var (--quatrinary);
+    
 
 }
 
@@ -45,6 +48,7 @@ nav {
     padding: 20px;
     margin-bottom: 10px;
     background-color:cadetblue;
+    opacity: 75%;
 }
 
 .login, .links {
