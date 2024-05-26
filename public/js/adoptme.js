@@ -6,7 +6,7 @@ const adoptHandler = async (submit) => {
  const email = document.querySelector("#email");
 
  if (adoptDesc && text || email) {
-    const response = await fetch('api/adopt', {
+    const response = await fetch('api/adoptme', {
         method: "POST",
         body:JSON.stringify({
             adoptDesc,
@@ -19,6 +19,7 @@ const adoptHandler = async (submit) => {
     });
     if (response.ok) {
         document.location.replace("/");
+        alert("Inquiry submitted! Someone will be in touch.")
     }else {
         alert("form not submitted");
     }
