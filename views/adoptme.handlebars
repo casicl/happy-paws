@@ -1,7 +1,21 @@
 <!--adopt a pet form-->
+<h2 class="adopt-header">Adopt a pet</h2>
 
-<h2> Welcome, {{name}}</h2>
+<h3 class="adopt-greeting"> Welcome, {{name}}</h3>
 
-<h3>Adopt a pet</h3>
-
-<form class="adopt-pet" id=""
+<p id="adopt-form">To adopt {{animals.id}}, tell us about yourself, i.e. your ideal pet, your activity level, your living situation, ages of any children, etc.:
+    <form class="adopt-pet" id="adopt-me">
+        <label for="adopt-desc"></label>
+        <textarea id="about-me" name="adopt-pet" rows="20" cols="100>"></textarea><br>
+        <label for="howto-contact">How would you prefer we contact you?</label><br>
+        <label for="text">TEXT</label>
+        <input type="radio" id="text" name="contact" value="text">
+         <input type="tel" id="text" name="phone" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"><br>
+         <label for="email">EMAIL</label>
+        <input type="radio" id="email" name="contact" value="email">
+        
+         <input type="email" id="email" name="email"><br>
+         <button type="button" id="adopt-submit" class="adopt-button">Submit</button>
+    </form>
+</p>
+     <script src="./js/adoptme.js"></script>

@@ -28,12 +28,31 @@ router.get("/addPet", withAuth, async (req,res) => {
     res.render("addPet", {logged_in: req.session.logged_in})
     console.log("hello")
 })
+
+
+router.get("/adoptme", withAuth, async (req,res) => {
+    res.render("adoptme")
+})
+
 router.get("/profile", withAuth, async (req,res) => {
     const animaldata = await Animal.findAll({where: {user_id: req.session.user_id}})
     console.log("animaldata", animaldata)
     const animals = animaldata.map((animal)=>{return animal.get({plain:true})})
     console.log("animals", animals)
     res.render("profile", {animals, logged_in: req.session.logged_in})
-    console.log("hello")
+
+
+})
+
+router.get("/edit/:id", withAuth, async (req,res) => {
+    try {
+        const animaldata = await Animal.findByPk(req.params.id,{
+
+        })
+        const animal = animaldata.get({plain:true})
+res.render("edit", {animal, logged_in: req.session.logged_in})
+    } catch (error) {
+        res.status(500).json(error)
+    }
 })
 module.exports = router;
