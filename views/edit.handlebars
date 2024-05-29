@@ -1,0 +1,25 @@
+<h1>Edit animal</h1>
+
+<form class = "new-pet" id="new-pet">
+    <label for="animal_name">Pet's name:</label>
+    <input class="form-input" type="text" id="animal-name" name="animal-name" value="{{animal.name}}"/>
+
+    <label for="animal-description">Description of pet:</label>
+    <input class="form-input" type="text" id="animal-description" name="animal-description" value="{{animal.description}}"/>
+
+    <label for="animal-image">Image of pet:</label>
+    <button id="open-widget">Select Image</button><div id="selected-image" style="margin-top: 20px;"><p>No image selected</p></div>
+    {{!-- <input class="form-input" type="text" id="animal-description" name="animal-description"/> --}}
+
+
+    <label for="date-created">Date:</label>
+    <input class="form-input" type="date" id="date-created" name="date-created" value="{{animal.date_created}}"/>
+
+    <label for="adoption_fee">Adoption fee:</label>
+    <input class="form-input" type="text" id="adoption-fee" name="adoption-fee" value="{{animal.adoption_fee}}"/>
+
+
+    <button type="button" id="sbmtbtn" class="submit-button" value="{{animal.id}}">Submit</button>
+</form>
+
+<script src="/js/edit.js"></script>
