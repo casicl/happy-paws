@@ -9,7 +9,8 @@
         <p id="animal_date">Date: {{animal.date_created}}</p>
         <p id="animal_fee">Adoption fee: ${{animal.adoption_fee}}</p>
         <button class="delete" data-id={{animal.id}} onclick="deletepet(event)">Delete</button>
-        <button id="edit">Edit</button>
+        <a href="/edit/{{animal.id}}" id="edit">Edit</a>
+        <button type="submit" id="end-editing">Done</button>
     </div>
     {{/each}}
     </div>

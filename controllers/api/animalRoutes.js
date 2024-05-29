@@ -77,4 +77,19 @@ res.json(animalToAdopt)
 catch(err){res.json(err)}})
 
 
+router.put("/edit/:id", withAuth, async(req, res)=> {
+try {
+  const editAnimal = await animals.update(
+    req.body
+    , {
+      where: {id: req.params.id} })
+if(!editAnimal){
+  console.log("animal not found")
+  return
+}  
+res.json(editAnimal)
+}
+catch(err){res.json(err)}})
+
+
 module.exports = router;
