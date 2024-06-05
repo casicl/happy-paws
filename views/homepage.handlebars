@@ -15,9 +15,9 @@ Your browser does not support the video tag.
         <p id="animal_date">Date: {{animals.date_created}}</p>
         <p id="animal_fee">Adoption Fee: ${{animals.adoption_fee}}</p>
         {{#if ../logged_in}}
-        <button id="adopt">Adopt Me<a href="/adoptme"></button>
-        <button id="comment">Comment</button>
-        {{/if}}
+       <a href="/adoptme" class="button">Adopt me</a>
+        <a href="/comment" class="button" id="comment-form">Comment</a>
+         {{/if}}
     </div>
     {{/each}}
     </div>
