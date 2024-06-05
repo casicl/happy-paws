@@ -1,12 +1,13 @@
 const router = require("express").Router();
 const  {} = require("../models");
 const withAuth = require("../utils/auth");
-const Animal = require("../models/animals");
+const {Animals, User} = require("../models/");
+
 
 
 router.get("/", async (req, res)=> {
     console.log("home", req.session)
-    const animalData = await Animal.findAll({})
+    const animalData = await Animals.findAll({})
     
     const animals = animalData.map((animal)=> animal.get({plain: true}));
 console.log(animals,"loginstatus",req.session.user_id)
@@ -31,11 +32,17 @@ router.get("/addPet", withAuth, async (req,res) => {
 
 
 router.get("/adoptme", withAuth, async (req,res) => {
-    res.render("adoptme")
-})
+    const userData = await User.findOne({where: {id: req.session.user_id}})
+    //if (userData) {
+    const userName = userData.get({plain:true})
+    console.log("adopt me", userName)
+    res.render("adoptme", userName)
+    //}
+}
+)
 
 router.get("/profile", withAuth, async (req,res) => {
-    const animaldata = await Animal.findAll({where: {user_id: req.session.user_id}})
+    const animaldata = await Animals.findAll({where: {user_id: req.session.user_id}})
     console.log("animaldata", animaldata)
     const animals = animaldata.map((animal)=>{return animal.get({plain:true})})
     console.log("animals", animals)

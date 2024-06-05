@@ -3,21 +3,39 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-router.post("/signup", async (req,res) => {
-  console.log(req.body)
+// router.post("/signup", async (req,res) => {
+//   console.log(req.body)
+//   try {
+//     const { name, email, password } = req.body;
+//     const user = await User.create({
+//     name,
+//     email,
+//     password
+//     })
+//     console.log(user);
+//   } catch (error) {
+//     res.status(500).json({ message: "Error creating new user"});
+//   }
+// });
+// CREATE NEW USER
+router.post('/signup', async (req, res) => {
+  console.log(req.body,"hello")
   try {
-    const { name, email, password } = req.body;
-    const user = await User.create({
-    name,
-    email,
-    password
-    })
-    console.log(user);
-  } catch (error) {
-    res.status(500).json({ message: "Error creating new user"});
+    const dbUserData = await User.create({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      res.status(200).json(dbUserData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
 });
-
 router.post('/login', async (req, res) => {
   
     User.findOne({ where: { email: req.body.email } }).then(async (userData)=>{
@@ -66,18 +84,19 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
-router.post("/signup",async (req,res)=>{
-try{
-const userData=await User.create(req.body)
-req.session.save(()=>{
-  req.session.user_id=userData.id;
-  req.session.name=userData
-  req.session.logged_in=true
-  res.status(200).json(userData)
-})
-}catch(err){
-  res.status(400).json(err)
-}
-})
+// router.post("/signup",async (req,res)=>{
+//   console.log("\n\n\n","body",req.body,"\n\n\n")
+// try{
+// const userData=await User.create(req.body)
+// req.session.save(()=>{
+//   req.session.user_id=userData.id;
+//   req.session.name=userData
+//   req.session.logged_in=true
+//   res.status(200).json(userData)
+// })
+// }catch(err){
+//   res.status(400).json(err)
+// }
+// })
 
 module.exports = router;
