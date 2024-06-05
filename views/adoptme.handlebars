@@ -1,7 +1,7 @@
 <!--adopt a pet form-->
 <h2 class="adopt-header">Adopt a pet</h2>
 
-<h3 class="adopt-greeting"> Welcome, {{name}}</h3>
+<h3 class="adopt-greeting"> Welcome, {{req.session.user_id}}</h3>
 
 <p id="adopt-form">To adopt {{animals.id}}, tell us about yourself, i.e. your ideal pet, your activity level, your living situation, ages of any children, etc.:
     <form class="adopt-pet" id="adopt-me">
@@ -18,4 +18,4 @@
          <button type="button" id="adopt-submit" class="adopt-button">Submit</button>
     </form>
 </p>
-     <script src="./js/adoptme.js"></script>
+     <script src="/js/adoptme.js"></script>
