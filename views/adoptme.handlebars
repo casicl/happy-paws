@@ -1,9 +1,9 @@
 <!--adopt a pet form-->
 <h2 class="adopt-header">Adopt a pet</h2>
 
-<h3 class="adopt-greeting"> Welcome, {{req.session.user_id}}</h3>
+<h3 class="adopt-greeting"> Welcome, {{user.name}}</h3>
 
-<p id="adopt-form">To adopt {{animals.id}}, tell us about yourself, i.e. your ideal pet, your activity level, your living situation, ages of any children, etc.:
+<p id="adopt-form">To adopt {{animal.name}}, tell us about yourself, i.e. your ideal pet, your activity level, your living situation, ages of any children, etc.:
     <form class="adopt-pet" id="adopt-me">
         <label for="adopt-desc"></label>
         <textarea id="about-me" name="adopt-pet" rows="20" cols="100>"></textarea><br>
