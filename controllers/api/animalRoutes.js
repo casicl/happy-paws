@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Model } = require('sequelize');
-const { animals } = require('../../models');
+const { Animals } = require('../../models');
 const withAuth = require('../../utils/auth');
 const cloudinary = require('../../utils/cloudinary');
 const upload = require('../../utils/multer');
@@ -8,7 +8,7 @@ const upload = require('../../utils/multer');
 router.post('/', async (req, res) => {
   console.log("body is ",req.body)
     try {
-        const newAnimals = await animals.create({
+        const newAnimals = await Animals.create({
             ...req.body,
             user_id:req.session.user_id
             
@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
 
 router.delete('/:id', withAuth, async (req, res) => {
     try {
-        const animalsData = await animals.destroy({
+        const animalsData = await Animals.destroy({
             where: {
                 id: req.params.id,
                 user_id: req.session.user_id,
@@ -46,7 +46,7 @@ router.put('/images', upload.single('imageUser'), async (req, res) => {
   try {
 
     const result = await cloudinary.uploader.upload(req.file.path)
-    animals.update({
+    Animals.update({
       imagename: req.file.originalname,
       animal_image: result.secure_url,
       cloudinary_id: result.public_id,
@@ -63,7 +63,7 @@ router.put('/images', upload.single('imageUser'), async (req, res) => {
 })
 router.put("/adopt/:id", withAuth, async(req, res)=> {
 try {
-  const animalToAdopt = await animals.update(
+  const animalToAdopt = await Animals.update(
     {user_id: req.session.user_id
 
     }, {
@@ -79,7 +79,7 @@ catch(err){res.json(err)}})
 
 router.put("/edit/:id", withAuth, async(req, res)=> {
 try {
-  const editAnimal = await animals.update(
+  const editAnimal = await Animals.update(
     req.body
     , {
       where: {id: req.params.id} })
