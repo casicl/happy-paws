@@ -53,7 +53,7 @@ router.get("/profile", withAuth, async (req,res) => {
 
 router.get("/edit/:id", withAuth, async (req,res) => {
     try {
-        const animaldata = await Animal.findByPk(req.params.id,{
+        const animaldata = await Animals.findByPk(req.params.id,{
 
         })
         const animal = animaldata.get({plain:true})
