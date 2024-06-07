@@ -18,9 +18,6 @@ This webpage is designed for users to find a new pet to adopt or post a pet to r
 ![happy paws](https://github.com/casicl/happy-paws/assets/158116041/c5ddaeaf-becc-403d-b3a3-d431c243e4bc)
 
 
-   
-## What it looks like:
-
 
 ## Deployed Link:
 https://happypaws-0ccbfdf6880b.herokuapp.com/
